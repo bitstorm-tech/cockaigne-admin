@@ -28,10 +28,10 @@ func login(c *fiber.Ctx) error {
 		})
 	}
 
-	log.Debugf("Login attempt: %+v", request.Email)
+	log.Debugf("Login attempt: %+v", request.Username)
 
 	acc := AdminAccount{}
-	err = persistence.DB.Where("email ilike ?", request.Email).First(&acc).Error
+	err = persistence.DB.Where("username ilike ?", request.Username).First(&acc).Error
 
 	if err != nil {
 		return c.Render("partials/alert", fiber.Map{"message": "Benutzername oder Passwort falsch"})

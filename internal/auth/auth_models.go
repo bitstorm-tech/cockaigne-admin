@@ -11,6 +11,6 @@ type AdminAccount struct {
 }
 
 type LoginRequest struct {
-	Email    string
+	Username string
 	Password string
 }

@@ -3,9 +3,10 @@
         <div class="flex items-center justify-between h-12">
             <a href="/" class="text-yellow-200 italic text-xl font-bold">Cockaigne City - Admin Center</a>
             <div class="hidden md:flex gap-1">
+                {{ if .isAuthenticated }}
                 <a class="menu-item" href="/vouchers">Gutscheine</a>
-                <a class="menu-item" href="/login">Login</a>
-                <a class="menu-item" href="/logout">Logout</a>
+                <a class="menu-item" href="/api/logout">Logout</a>
+                {{ end }}
             </div>
             <div class="-mr-2 flex md:hidden">
                 <div class="text-yellow-200 cursor-pointer h-6 w-6" hx-get="/ui/header?showMenu={{ not .showMenu }}"
@@ -31,9 +32,10 @@
     {{ if .showMenu }}
     <div class="md:hidden">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            {{ if .isAuthenticated }}
             <a class="block menu-item" href="/vouchers">Gutscheine</a>
-            <a class="block menu-item" href="/login">Login</a>
-            <a class="block menu-item" href="/logout">Logout</a>
+            <a class="block menu-item" href="/api/logout">Logout</a>
+            {{ end }}
         </div>
     </div>
     {{ end }}

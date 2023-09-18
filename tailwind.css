@@ -8,7 +8,7 @@
     }
 
     input, select, textarea {
-        @apply flex h-12 w-full items-center justify-center rounded-xl border bg-white/0 p-3 text-sm outline-none border-gray-400
+        @apply flex h-10 w-full items-center justify-center rounded-xl border bg-white/0 p-3 text-sm outline-none border-gray-400
     }
 
     select {

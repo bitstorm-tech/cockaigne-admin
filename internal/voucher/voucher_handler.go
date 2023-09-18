@@ -12,7 +12,6 @@ func Register(app *fiber.App) {
 		_, err := auth.ParseJwtToken(jwt)
 
 		if err != nil {
-			log.Errorf("Can't parse JWT token: %+v", err)
 			return c.Redirect("/login")
 		}
 
