@@ -1,0 +1,22 @@
+<form hx-post="/api/vouchers" class="flex flex-col gap-4">
+    <input type="text" name="code" placeholder="Code">
+    <div class="flex flex-col gap-2">
+        <label for="start" class="select-none text-xs pl-2">Start</label>
+        <input type="date" name="start" id="start">
+    </div>
+    <div class="flex flex-col gap-2">
+        <label for="end" class="select-none text-xs pl-2">Ende</label>
+        <input type="date" name="end" id="end">
+    </div>
+    <div class="flex gap-2 items-center">
+        <input type="checkbox" class="checkbox" name="active" id="active" checked>
+        <label for="active" class="select-none">Aktiv</label>
+    </div>
+    <div class="flex gap-2 items-center">
+        <input type="checkbox" class="checkbox" name="multiUse" id="multi-use">
+        <label for="multi-use" class="select-none">Kann mehr als einmal aktiviert werden</label>
+    </div>
+    <button>Gutschein erstellen</button>
+</form>
+<hr class="my-6">
+<h1>Gutscheine</h1>
