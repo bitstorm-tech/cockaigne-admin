@@ -1,25 +1,25 @@
-<table class="table-auto border-collapse border border-slate-500">
+<table class="w-full table-auto border-collapse">
   <thead>
     <tr>
-      <th class="border border-slate-600 bg-gray-200 px-4">Code</th>
-      <th class="border border-slate-600 bg-gray-200 px-4">Kommentar</th>
-      <th class="border border-slate-600 bg-gray-200 px-4">Start</th>
-      <th class="border border-slate-600 bg-gray-200 px-4">Ende</th>
-      <th class="border border-slate-600 bg-gray-200 px-4">Dauer (in Tagen)</th>
-      <th class="border border-slate-600 bg-gray-200 px-4">Aktiv</th>
-      <th class="border border-slate-600 bg-gray-200 px-4">Mehrfachnutzung</th>
+      <th class="border border-x-0 border-slate-600 bg-gray-200 p-2">Code</th>
+      <th class="border border-x-0 border-slate-600 bg-gray-200 p-2">Kommentar</th>
+      <th class="border border-x-0 border-slate-600 bg-gray-200 p-2">Start</th>
+      <th class="border border-x-0 border-slate-600 bg-gray-200 p-2">Ende</th>
+      <th class="border border-x-0 border-slate-600 bg-gray-200 p-2">Dauer (in Tagen)</th>
+      <th class="border border-x-0 border-slate-600 bg-gray-200 p-2">Aktiv</th>
+      <th class="border border-x-0 border-slate-600 bg-gray-200 p-2">Mehrfachnutzung</th>
     </tr>
   </thead>
   <tbody>
     {{ range $index, $voucher := .vouchers }}
     <tr>
-      <td class="border border-slate-600 p-4">{{ $voucher.Code }}</td>
-      <td class="border border-slate-600 p-4">{{ $voucher.Comment }}</td>
-      <td class="border border-slate-600 p-4">{{ $voucher.Start.String }}</td>
-      <td class="border border-slate-600 p-4">{{ $voucher.End.String }}</td>
-      <td class="border border-slate-600 p-4">{{ $voucher.DurationInDays }}</td>
-      <td class="border border-slate-600 p-4">{{ if $voucher.IsActive }} ✅ {{ else }} ❌ {{ end }}</td>
-      <td class="border border-slate-600 p-4">{{ if $voucher.MultiUse }} ✅ {{ else }} ❌ {{ end }}</td>
+      <td class="border border-x-0 border-slate-600 p-2">{{ $voucher.Code }}</td>
+      <td class="border border-x-0 border-slate-600 p-2">{{ $voucher.Comment }}</td>
+      <td class="border border-x-0 border-slate-600 p-2">{{ $voucher.Start.String }}</td>
+      <td class="border border-x-0 border-slate-600 p-2">{{ $voucher.End.String }}</td>
+      <td class="border border-x-0 border-slate-600 p-2">{{ $voucher.DurationInDays }}</td>
+      <td class="border border-x-0 border-slate-600 p-2">{{ if $voucher.IsActive }} ✅ {{ else }} ❌ {{ end }}</td>
+      <td class="border border-x-0 border-slate-600 p-2">{{ if $voucher.MultiUse }} ✅ {{ else }} ❌ {{ end }}</td>
     </tr>
     {{ end }}
   </tbody>
