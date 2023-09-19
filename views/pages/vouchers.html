@@ -1,1 +1,26 @@
-<h1>Gutscheine</h1>
+<table class="table-auto">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Kommentar</th>
+      <th>Start</th>
+      <th>Ende</th>
+      <th>Dauer (in Tagen)</th>
+      <th>Aktiv</th>
+      <th>Mehrfachnutzung</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{ range $index, $voucher := .vouchers }}
+    <tr>
+      <td>{{ $voucher.Code }}</td>
+      <td>{{ $voucher.Comment }}</td>
+      <td>{{ $voucher.Start.String }}</td>
+      <td>{{ $voucher.End.String }}</td>
+      <td>{{ $voucher.DurationInDays }}</td>
+      <td>{{ $voucher.IsActive }}</td>
+      <td>{{ $voucher.MultiUse }}</td>
+    </tr>
+    {{ end }}
+  </tbody>
+</table>

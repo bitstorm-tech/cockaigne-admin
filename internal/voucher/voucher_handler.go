@@ -13,7 +13,10 @@ func Register(app *fiber.App) {
 			return c.Redirect("/login")
 		}
 
-		return c.Render("pages/vouchers", nil, "layouts/main")
+		vouchers := []Voucher{}
+		persistence.DB.Find(&vouchers)
+
+		return c.Render("pages/vouchers", fiber.Map{"vouchers": vouchers}, "layouts/main")
 	})
 
 	app.Get("/create-voucher", func(c *fiber.Ctx) error {
@@ -29,17 +32,21 @@ func Register(app *fiber.App) {
 			return c.Redirect("/login")
 		}
 
-		voucher := &Voucher{}
-		err := c.BodyParser(voucher)
-
+		voucherRequest := CreateVoucherRequest{}
+		err := c.BodyParser(&voucherRequest)
 		if err != nil {
 			log.Warnf("Can't parse voucher from request body: %+v", err)
 		}
 
-		err = persistence.DB.Create(voucher).Error
+		voucher, err := voucherRequest.ToVoucher()
+		if err != nil {
+			log.Warnf("Can't create voucher from request: %+v", err)
+		}
+
+		err = persistence.DB.Create(&voucher).Error
 
 		if err != nil {
-			log.Warnf("Can't create voucher: %+v", err)
+			log.Warnf("Can't create voucher in DB: %+v", err)
 		}
 
 		return c.Redirect("/vouchers")
