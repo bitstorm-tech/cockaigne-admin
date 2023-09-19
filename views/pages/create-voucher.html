@@ -1,0 +1,51 @@
+<form action="/api/vouchers" method="post" class="flex flex-col gap-4"
+      x-data="{showDuration: true, startWhenEnter: false}">
+    <div class="flex flex-col gap-2">
+        <label for="code" class="select-none text-xs pl-2">Gutschein-Code</label>
+        <input id="code" type="text" name="code">
+    </div>
+    <div class="flex flex-col gap-2">
+        <label for="comment" class="select-none text-xs pl-2">Kommentar</label>
+        <input id="comment" type="text" name="comment">
+    </div>
+    <div class="grid grid-cols-2 gap-2">
+        <div class="flex flex-col gap-2" x-show="!startWhenEnter">
+            <label for="start" class="select-none text-xs pl-2">Start</label>
+            <input type="date" name="start" id="start">
+        </div>
+        <div class="flex flex-col gap-2" x-show="startWhenEnter">
+            <label class="select-none text-xs pl-2">Start</label>
+            <span class="h-full flex items-center">Sobald der Gutschein eingegeben wird</span>
+        </div>
+        <div>
+            <div class="flex flex-col gap-2" x-show="!showDuration">
+                <label for="end" class="select-none text-xs pl-2">Ende</label>
+                <input type="date" name="end" id="end">
+            </div>
+            <div class="flex flex-col gap-2" x-show="showDuration">
+                <label for="duration" class="select-none text-xs pl-2">Dauer in Tagen</label>
+                <input type="number" name="durationInDays" id="duration">
+            </div>
+        </div>
+    </div>
+    <div class="flex gap-2 items-center">
+        <input type="checkbox" class="checkbox" name="end-or-duration" id="start-when-enter"
+               x-on:click="startWhenEnter = !startWhenEnter">
+        <label for="start-when-enter" class="select-none">Beginnt nach Eingabbe</label>
+    </div>
+    <div class="flex gap-2 items-center">
+        <input type="checkbox" class="checkbox" name="end-or-duration" id="use-duration" checked
+               x-on:click="showDuration = !showDuration">
+        <label for="use-duration" class="select-none">Verwende Dauer</label>
+    </div>
+    <div class="flex gap-2 items-center">
+        <input type="checkbox" class="checkbox" name="active" id="active" checked>
+        <label for="active" class="select-none">Aktiv (kann verwendet werden)</label>
+    </div>
+    <div class="flex gap-2 items-center">
+        <input type="checkbox" class="checkbox" name="multiUse" id="multi-use">
+        <label for="multi-use" class="select-none">Kann mehr als einmal aktiviert werden (von verschiedenen
+            Dealern)</label>
+    </div>
+    <button>Gutschein erstellen</button>
+</form>

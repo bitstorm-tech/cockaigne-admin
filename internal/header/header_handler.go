@@ -7,11 +7,9 @@ import (
 
 func Register(app *fiber.App) {
 	app.Get("/ui/header", func(c *fiber.Ctx) error {
-		showMenu := c.Query("showMenu")
 		isAuthenticated := auth.IsAuthenticated(c)
 
 		return c.Render("partials/header", fiber.Map{
-			"showMenu":        showMenu == "true",
 			"isAuthenticated": isAuthenticated,
 		})
 	})
