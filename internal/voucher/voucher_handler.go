@@ -47,17 +47,28 @@ func Register(app *fiber.App) {
 		err := c.BodyParser(&voucherRequest)
 		if err != nil {
 			log.Warnf("Can't parse voucher from request body: %+v", err)
+			return c.Render("partials/alert", fiber.Map{"message": err.Error()})
+		}
+
+		if voucherRequest.Code == "" {
+			return c.Render("partials/alert", fiber.Map{"message": "Bitte einen Code angeben"})
+		}
+
+		if voucherRequest.Comment == "" {
+			return c.Render("partials/alert", fiber.Map{"message": "Bitte einen Kommentar angeben"})
 		}
 
 		voucher, err := voucherRequest.ToVoucher()
 		if err != nil {
 			log.Warnf("Can't create voucher from request: %+v", err)
+			return c.Render("partials/alert", fiber.Map{"message": err.Error()})
 		}
 
 		err = persistence.DB.Create(&voucher).Error
 
 		if err != nil {
 			log.Warnf("Can't create voucher in DB: %+v", err)
+			return c.Render("partials/alert", fiber.Map{"message": err.Error()})
 		}
 
 		return c.Redirect("/vouchers")

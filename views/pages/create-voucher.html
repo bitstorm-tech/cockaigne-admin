@@ -1,6 +1,6 @@
 <form
-  action="/api/vouchers"
-  method="post"
+  hx-post="/api/vouchers"
+  hx-target="#alert"
   class="flex flex-col gap-4"
   x-data="{showDuration: true, startWhenEnter: false, start: new Date().toISOString().split('T')[0], end: new Date().toISOString().split('T')[0]}"
 >
@@ -64,3 +64,4 @@
   </div>
   <button>Gutschein erstellen</button>
 </form>
+<div id="alert"></div>
