@@ -1,6 +1,8 @@
 package voucher
 
 import (
+	"strings"
+
 	"github.com/bitstorm-tech/cockaigne/internal/auth"
 	"github.com/bitstorm-tech/cockaigne/internal/persistence"
 	"github.com/gofiber/fiber/v2"
@@ -15,6 +17,15 @@ func Register(app *fiber.App) {
 
 		vouchers := []Voucher{}
 		persistence.DB.Find(&vouchers)
+
+		for i := range vouchers {
+			if vouchers[i].Start.Valid {
+				vouchers[i].Start.String = strings.Split(vouchers[i].Start.String, "T")[0]
+			}
+			if vouchers[i].End.Valid {
+				vouchers[i].End.String = strings.Split(vouchers[i].End.String, "T")[0]
+			}
+		}
 
 		return c.Render("pages/vouchers", fiber.Map{"vouchers": vouchers}, "layouts/main")
 	})
