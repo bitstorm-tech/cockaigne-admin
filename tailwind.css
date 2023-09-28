@@ -5,13 +5,13 @@
 @layer base {
   button,
   .btn {
-    @apply select-none rounded-xl bg-slate-700 px-4 py-2 text-white transition duration-500 ease-in-out hover:bg-indigo-600 focus:outline-none;
+    @apply select-none rounded bg-slate-700 px-4 py-2 text-white transition duration-300 ease-in-out hover:bg-black focus:outline-none;
   }
 
   input,
   select,
   textarea {
-    @apply flex h-10 w-full items-center justify-center rounded-xl border border-gray-400 bg-white/0 p-3 text-sm outline-none;
+    @apply flex h-10 w-full items-center justify-center rounded border border-gray-400 bg-white/0 p-3 text-sm outline-none;
   }
 
   select {

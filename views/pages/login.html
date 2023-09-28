@@ -1,9 +1,12 @@
-<form hx-post="/api/login" hx-target="#alert" class="flex flex-col gap-4 pt-24">
-    <input type="username" placeholder="Benutzername" name="username">
-    <input type="password" placeholder="Passwort" name="password">
-    <div class="flex justify-center pt-10 gap-3">
-        <button>Einloggen</button>
-        <a class="btn" href="/">Zurück</a>
+<div class="rounded-lg border-2 p-8">
+  <h1 class="text-center text-2xl font-bold">Login</h1>
+  <form hx-post="/api/login" hx-target="#alert" class="flex flex-col gap-4 pt-10">
+    <input type="text" placeholder="Benutzername" name="username" />
+    <input type="password" placeholder="Passwort" name="password" />
+    <div class="flex justify-center gap-3 pt-10">
+      <button>Einloggen</button>
+      <a class="btn" href="/">Zurück</a>
     </div>
-</form>
+  </form>
+</div>
 <div id="alert"></div>
